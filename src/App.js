@@ -62,7 +62,8 @@ function App() {
       <header>
         <Navigation account={account} setAccount={setAccount} />
 
-        <h2 className="header__title"><strong>Event</strong> Tickets</h2>
+        <h2 className="header__title">Book Your <strong>EVENT</strong> Tickets <strong>EASILY</strong> With <strong>BOOKAia</strong></h2>
+        <p className="header_para">NFT directly to your wallet!</p>
       </header>
 
       <Sort />

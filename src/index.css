@@ -46,8 +46,7 @@ nav {
 .nav__brand h1 {
   color: var(--clr-white);
   font-family: "Poiret One";
-  font-size: 1.75em;
-  font-style: italic;
+  font-size: 2em;
   margin-right: 10px;
   text-shadow: 2px 2px 4px rgba(227, 24, 55, 0.3);
 }
@@ -144,14 +143,18 @@ header {
 
 .header__title {
   color: var(--clr-white);
-  position: absolute;
-  bottom: 40px;
-  left: 10%;
-  max-width: 500px;
+  margin: 3rem 0 0 2rem;
+  max-width: 100%;
   font-family: "Open Sans";
   font-size: clamp(2.5rem, 5vw, 3.5rem);
   font-weight: 300;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.header_para{
+  position: absolute;
+  color: #fff;
+  margin-left: 12rem;
 }
 
 /* ------------------------------------------------------ */
@@ -481,6 +484,7 @@ header {
   }
 
   .header__title {
+    width: 100%;
     font-size: clamp(2rem, 4vw, 2.5rem);
     bottom: 30px;
   }

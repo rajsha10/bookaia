@@ -18,7 +18,6 @@ const Navigation = ({ account, setAccount }) => {
           <li><a href="/">Concerts</a></li>
           <li><a href="/">Sports</a></li>
           <li><a href="/">Arts & Theater</a></li>
-          <li><a href="/">More</a></li>
         </ul>
       </div>
 
