@@ -8,7 +8,7 @@ import Card from './components/Card'
 import SeatChart from './components/SeatChart'
 
 // ABIs
-import TokenMaster from './abis/TokenMaster.json'
+import BookAia from './abis/BookAia.json'
 
 // Config
 import config from './config.json'
@@ -17,25 +17,28 @@ function App() {
   const [provider, setProvider] = useState(null)
   const [account, setAccount] = useState(null)
 
-  const [tokenMaster, setTokenMaster] = useState(null)
+  const [bookAia, setBookAia] = useState(null)
   const [occasions, setOccasions] = useState([])
 
   const [occasion, setOccasion] = useState({})
   const [toggle, setToggle] = useState(false)
 
   const loadBlockchainData = async () => {
+    const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' })
+      const account = ethers.utils.getAddress(accounts[0])
+      setAccount(account)
     const provider = new ethers.providers.Web3Provider(window.ethereum)
     setProvider(provider)
 
     const network = await provider.getNetwork()
-    const tokenMaster = new ethers.Contract(config[network.chainId].TokenMaster.address, TokenMaster, provider)
-    setTokenMaster(tokenMaster)
+    const bookAia = new ethers.Contract(config[network.chainId].BookAia.address, BookAia, provider)
+    setBookAia(bookAia)
 
-    const totalOccasions = await tokenMaster.totalOccasions()
+    const totalOccasions = await bookAia.totalOccasions()
     const occasions = []
 
     for (var i = 1; i <= totalOccasions; i++) {
-      const occasion = await tokenMaster.getOccasion(i)
+      const occasion = await bookAia.getOccasion(i)
       occasions.push(occasion)
     }
 
@@ -46,10 +49,12 @@ function App() {
       const account = ethers.utils.getAddress(accounts[0])
       setAccount(account)
     })
+    console.log(account)
   }
 
-  useEffect(() => {
-    loadBlockchainData()
+  useEffect(  () =>  {
+    loadBlockchainData()    
+    console.log("Works")
   }, [])
 
   return (
@@ -67,7 +72,7 @@ function App() {
           <Card
             occasion={occasion}
             id={index + 1}
-            tokenMaster={tokenMaster}
+            bookAia={bookAia}
             provider={provider}
             account={account}
             toggle={toggle}
@@ -81,7 +86,7 @@ function App() {
       {toggle && (
         <SeatChart
           occasion={occasion}
-          tokenMaster={tokenMaster}
+          bookAia={bookAia}
           provider={provider}
           setToggle={setToggle}
         />

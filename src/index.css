@@ -9,11 +9,11 @@
 :root {
   --clr-white: #FFFFFF;
   --clr-black: #000000;
-  --clr-grey: #2b2727;
-  --clr-grey-2: #2b2727;
-
-  --clr-dark-blue: #0237AB;
-  --clr-light-blue: #125AC6;
+  --clr-grey: #1a1a1a;
+  --clr-grey-2: #2b2b2b;
+  --clr-red: #e31837;
+  --clr-dark-red: #b31414;
+  --clr-light-grey: #f5f5f5;
 }
 
 body {
@@ -21,6 +21,7 @@ body {
   font-family: "Open Sans";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--clr-light-grey);
 }
 
 /* ------------------------------------------------------ */
@@ -30,46 +31,51 @@ nav {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   align-items: center;
+  background-color: var(--clr-black);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 .nav__brand {
   display: flex;
   align-items: center;
-
   padding: 0 75px;
-
   grid-column: 1 / span 3;
-
-  height: 65px;
+  height: 75px;
 }
 
 .nav__brand h1 {
   color: var(--clr-white);
-
   font-family: "Poiret One";
-  font-size: 1.50em;
+  font-size: 1.75em;
   font-style: italic;
   margin-right: 10px;
+  text-shadow: 2px 2px 4px rgba(227, 24, 55, 0.3);
 }
 
 .nav__search {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.1);
   background-image: url("./assets/magnifying-glass.svg");
   background-repeat: no-repeat;
   background-position-y: center;
+  background-position-x: 10px;
   color: var(--clr-white);
-
-  width: 250px;
-  height: 35px;
-
-  border: none;
-  border-radius: 4px;
+  width: 280px;
+  height: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
   margin: 0 5px;
-  padding-left: 30px;
+  padding-left: 40px;
+  transition: all 0.3s ease;
+}
+
+.nav__search:focus {
+  background-color: rgba(255, 255, 255, 0.15);
+  border-color: var(--clr-red);
+  outline: none;
 }
 
 .nav__search::placeholder {
-  color: var(--clr-white);
+  color: rgba(255, 255, 255, 0.7);
   font-family: "Open Sans";
 }
 
@@ -77,15 +83,13 @@ nav {
   display: flex;
   justify-content: center;
   align-items: center;
-
   height: 100%;
-
   list-style: none;
 }
 
 .nav__links li {
   height: 100%;
-  min-width: 60px;
+  min-width: 70px;
 }
 
 .nav__links li a {
@@ -93,68 +97,61 @@ nav {
   justify-content: center;
   align-content: center;
   flex-wrap: wrap;
-
   height: 100%;
-  padding: 0 10px;
-
+  padding: 0 20px;
   color: var(--clr-white);
-
   font-weight: 600;
   text-decoration: none;
+  transition: all 0.3s ease;
 }
 
 .nav__links li a:hover {
-  background-color: rgba(34, 64, 109, 0.3);
+  background-color: var(--clr-red);
+  color: var(--clr-white);
 }
 
 .nav__connect {
   width: 175px;
-  height: 50px;
+  height: 45px;
   margin: 0 75px 0 auto;
-
-  background: rgba(255, 255, 255, 0.2);
+  background: var(--clr-red);
   color: var(--clr-white);
-
   border: none;
-  border-radius: 4px;
-
+  border-radius: 25px;
   font-family: "Open Sans";
   font-size: 1.10em;
   font-weight: 600;
-
   cursor: pointer;
-  transition: all 250ms ease;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .nav__connect:hover {
-  background-color: var(--clr-dark-blue);
+  background-color: var(--clr-dark-red);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 /* ------------------------------------------------------ */
 /* -- HEADER -- */
 
 header {
-  background-image: linear-gradient(45deg, var(--clr-dark-blue) 10%, var(--clr-light-blue) 20%, var(--clr-dark-blue) 50%, var(--clr-light-blue) 120%);
-  background-size: contain;
-  background-position: right;
-  background-repeat: no-repeat;
-  background-color: var(--clr-grey);
-  min-height: 25vh;
-
+  background: linear-gradient(45deg, var(--clr-black) 0%, var(--clr-red) 100%);
+  min-height: 30vh;
   position: relative;
+  overflow: hidden;
 }
 
 .header__title {
   color: var(--clr-white);
-
   position: absolute;
-  bottom: 25px;
+  bottom: 40px;
   left: 10%;
-  max-width: 450px;
-
+  max-width: 500px;
   font-family: "Open Sans";
-  font-size: clamp(2rem, 5vw, 3rem);
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
   font-weight: 300;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 /* ------------------------------------------------------ */
@@ -164,36 +161,38 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 20px 0;
 }
 
 .sort__select {
-  width: 225px;
-  height: 40px;
-
-  margin: 25px 5px;
-  border: 1px solid var(--clr-black);
-
+  width: 250px;
+  height: 45px;
+  margin: 25px 10px;
+  border: 2px solid var(--clr-grey);
+  border-radius: 8px;
+  background-color: var(--clr-white);
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .sort__select p {
-  margin-left: 10px;
-  font-size: clamp(0.80rem, 2vw, 1rem);
+  margin-left: 15px;
+  font-size: clamp(0.85rem, 2vw, 1rem);
+  color: var(--clr-grey);
 }
 
 .sort__select img {
   width: 15px;
   height: auto;
-  margin-right: 10px;
+  margin-right: 15px;
 }
 
 .sort__select:hover {
-  border: 1px solid var(--clr-light-blue);
-  outline: 2px solid var(--clr-light-blue);
+  border-color: var(--clr-red);
+  box-shadow: 0 2px 8px rgba(227, 24, 55, 0.2);
 }
 
 /* ------------------------------------------------------ */
@@ -201,50 +200,53 @@ header {
 
 .card {
   align-items: center;
-
   width: 95%;
-  max-width: 850px;
-  height: 75px;
-
+  max-width: 900px;
+  height: 85px;
   margin: 25px auto;
+  background-color: var(--clr-white);
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
 
-  position: relative;
-  transition: all 250ms ease;
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
 }
 
 .card__info {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: repeat(2, 1fr);
-
   height: 100%;
-  padding: 10px;
-
+  padding: 15px;
   text-align: left;
-
-  transition: 250ms ease all;
+  transition: 0.3s ease all;
 }
 
 .card__info:hover {
-  background: rgba(18, 90, 198, 0.2);
+  background: rgba(227, 24, 55, 0.05);
+  border-radius: 12px;
 }
-
 
 .card__info p small {
   font-size: clamp(0.80rem, 2vw, 0.90rem);
+  color: var(--clr-grey);
 }
 
 .card__info p small span {
   font-weight: 700;
+  color: var(--clr-red);
 }
 
 .card__date {
   grid-column: 1 / span 2;
   grid-row: 1 / span 2;
   place-self: center;
-
-  font-size: clamp(0.95rem, 3vw, 1.15rem);
-  font-weight: 300;
+  font-size: clamp(1rem, 3vw, 1.2rem);
+  font-weight: 600;
+  color: var(--clr-grey);
 }
 
 .card__name {
@@ -252,12 +254,10 @@ header {
   grid-row: 1;
   place-self: center;
   align-self: end;
-
   font-family: "Open Sans";
-  font-size: clamp(0.90rem, 3vw, 1.10rem);
-  font-weight: 600;
-
-  text-align: center;
+  font-size: clamp(1rem, 3vw, 1.2rem);
+  font-weight: 700;
+  color: var(--clr-black);
 }
 
 .card__location {
@@ -265,27 +265,25 @@ header {
   grid-row: 2;
   place-self: center;
   align-self: start;
-
   font-size: 1.15rem;
-  font-weight: 300;
-
-  text-align: center;
+  font-weight: 400;
+  color: var(--clr-grey);
 }
 
 .card__cost {
   grid-column: 9 / span 1;
   grid-row: 1 / span 2;
   place-self: center;
-
-  font-size: clamp(1rem, 3vw, 1.10rem);
-  font-weight: 300;
+  font-size: clamp(1rem, 3vw, 1.15rem);
+  font-weight: 400;
+  color: var(--clr-grey);
 }
 
 .card__cost strong {
   font-family: "Open Sans";
-  font-size: clamp(1.10rem, 3vw, 1.50rem);
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
   font-weight: 700;
-  margin: 0;
+  color: var(--clr-red);
 }
 
 .card__button,
@@ -293,39 +291,38 @@ header {
   grid-column: 10 / span 3;
   grid-row: 1 / span 2;
   place-self: center;
-
-  width: 125px;
-  height: 40px;
-
-  background-color: var(--clr-light-blue);
+  width: 135px;
+  height: 45px;
+  background-color: var(--clr-red);
   color: var(--clr-white);
-
   margin-left: auto;
   border: none;
-  border-radius: 4px;
-
+  border-radius: 25px;
   font-family: "Open Sans";
   font-size: 1em;
   font-weight: 600;
-
   cursor: pointer;
-  transition: all 250ms ease;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .card__button:hover {
-  background-color: var(--clr-dark-blue);
-}
-
-.card__button:hover .card__button {
-  border-color: var(--clr-grey-2);
+  background-color: var(--clr-dark-red);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .card__button--out {
-  background-color: #BA1840;
+  background-color: var(--clr-grey);
+  opacity: 0.8;
+  cursor: not-allowed;
 }
 
 .card hr {
   margin-top: 15px;
+  border: none;
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 /* ------------------------------------------------------ */
@@ -334,64 +331,58 @@ header {
 .occasion {
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.7);
-
+  background-color: rgba(0, 0, 0, 0.85);
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  backdrop-filter: blur(5px);
 }
 
 .occasion__seating {
   display: grid;
-  gap: 5px;
+  gap: 8px;
   grid-template-columns: repeat(25, 1fr);
-
-  background: linear-gradient(to bottom, var(--clr-light-blue), var(--clr-white) 75%);
+  background: linear-gradient(to bottom, var(--clr-red), var(--clr-black) 75%);
   border: 10px solid var(--clr-grey);
-  border-radius: 8px;
-
+  border-radius: 16px;
   width: 90%;
   max-width: 1200px;
   height: 85%;
   margin: 0 auto;
-  padding: 20px;
-
+  padding: 25px;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 2;
   overflow-x: scroll;
+  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.5);
 }
 
 .occasion__seating h1 {
   grid-column: 1 / span 27;
   grid-row: 1;
-
   color: var(--clr-white);
   font-weight: 300;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .occasion__close {
   grid-column: 27 / span 1;
   grid-row: 1;
-
-  width: 35px;
-  height: 35px;
-
-  background: rgba(255, 255, 255, 0.2);
-  border: 1px solid var(--clr-grey);
-  border-radius: 6px;
-
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 2px solid var(--clr-white);
+  border-radius: 50%;
   cursor: pointer;
-
-  transition: 250ms ease all;
+  transition: 0.3s ease all;
 }
 
 .occasion__close:hover {
-  background: rgba(255, 255, 255, 1);
-  border: 1px solid var(--clr-white);
+  background: var(--clr-white);
+  transform: rotate(90deg);
 }
 
 .occasion__close img {
@@ -405,27 +396,26 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-
-  background-color: var(--clr-grey);
+  background-color: var(--clr-black);
   color: var(--clr-white);
 }
 
 .occasion__stage {
   grid-column: 1 / span 27;
   grid-row: 2;
-
   height: 150px;
-
-  border: 3px solid black;
-  border-radius: 0 0 24px 24px;
+  border: 3px solid var(--clr-red);
+  border-radius: 0 0 30px 30px;
+  box-shadow: 0 4px 15px rgba(227, 24, 55, 0.3);
 }
 
 .occasion__spacer--1,
 .occasion__spacer--2 {
   min-width: 30px;
   margin: 0 5px;
-  border: 1px solid black;
+  border: 1px solid var(--clr-red);
   writing-mode: vertical-lr;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .occasion__spacer--1 {
@@ -443,32 +433,31 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-
-  background-color: var(--clr-dark-blue);
+  background-color: var(--clr-red);
   color: var(--clr-white);
-
-  width: 35px;
-  height: 35px;
-  border: 1px solid black;
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--clr-white);
   border-radius: 50%;
-
   font-size: 0.9em;
-
+  font-weight: 600;
   cursor: pointer;
-
-  transition: 250ms ease all;
+  transition: 0.3s ease all;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .occasion__seats:hover {
   background: var(--clr-white);
-  color: var(--clr-black);
-
-  font-size: 1em;
-  font-weight: 700;
+  color: var(--clr-red);
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(227, 24, 55, 0.4);
 }
 
 .occasion__seats--taken {
-  background-color: rgba(34, 64, 109, 0.7);
+  background-color: rgba(0, 0, 0, 0.5);
+  border-color: rgba(255, 255, 255, 0.3);
+  cursor: not-allowed;
+  box-shadow: none;
 }
 
 /* ------------------------------------------------------ */
@@ -486,6 +475,15 @@ header {
   .nav__links {
     display: none;
   }
+
+  .nav__connect {
+    margin: 0 30px 0 auto;
+  }
+
+  .header__title {
+    font-size: clamp(2rem, 4vw, 2.5rem);
+    bottom: 30px;
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -494,29 +492,73 @@ header {
   }
 
   .nav__brand {
-    padding: 30px 50px;
+    padding: 30px 30px;
+  }
+
+  .nav__brand h1 {
+    font-size: 1.5em;
   }
 
   .nav__connect {
-    margin: 0 50px 0 auto;
+    width: 150px;
+    margin: 0 30px 0 auto;
+    font-size: 1em;
+  }
+
+  .sort {
+    flex-direction: column;
+    padding: 10px 0;
+  }
+
+  .sort__select {
+    width: 90%;
+    max-width: 300px;
+    margin: 10px 0;
+  }
+
+  .occasion__seating {
+    padding: 15px;
+    gap: 5px;
+  }
+
+  .occasion__seats,
+  .occasion__seats--taken {
+    width: 35px;
+    height: 35px;
+    font-size: 0.8em;
   }
 }
 
 @media screen and (max-width: 576px) {
+  .nav__brand {
+    padding: 20px;
+  }
+
+  .nav__connect {
+    width: 120px;
+    height: 40px;
+    margin: 0 20px 0 auto;
+    font-size: 0.9em;
+  }
+
   .card {
-    height: 100px;
+    height: 120px;
   }
 
   .card__info {
-    padding: 0;
+    padding: 10px;
   }
 
   .card__name {
     grid-column: 3 / span 7;
+    font-size: 0.9em;
+    text-align: left;
   }
 
   .card__location {
     grid-column: 3 / span 7;
+    font-size: 0.85em;
+    text-align: left;
   }
 
   .card__cost {
@@ -524,13 +566,101 @@ header {
     grid-row: 1 / span 2;
     place-self: flex-start;
     justify-self: center;
-
     margin-top: 20px;
+    font-size: 0.9em;
   }
 
-  .card__button {
+  .card__button,
+  .card__button--out {
     grid-column: 10 / span 3;
     grid-row: 2 / span 2;
     place-self: center;
+    width: 110px;
+    height: 35px;
+    font-size: 0.9em;
   }
+
+  .occasion__stage {
+    height: 100px;
+  }
+
+  .occasion__seating h1 {
+    font-size: 1.2em;
+  }
+
+  .occasion__close {
+    width: 30px;
+    height: 30px;
+  }
+
+  .occasion__close img {
+    width: 20px;
+    height: 20px;
+  }
+
+  /* Add smooth scrolling for better mobile experience */
+  .occasion__seating {
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: var(--clr-red) var(--clr-black);
+  }
+
+  /* Custom scrollbar styling */
+  .occasion__seating::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  .occasion__seating::-webkit-scrollbar-track {
+    background: var(--clr-black);
+    border-radius: 4px;
+  }
+
+  .occasion__seating::-webkit-scrollbar-thumb {
+    background: var(--clr-red);
+    border-radius: 4px;
+  }
+
+  .occasion__seating::-webkit-scrollbar-thumb:hover {
+    background: var(--clr-dark-red);
+  }
+}
+
+/* Add custom animation for button press */
+@keyframes buttonPress {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.card__button:active,
+.nav__connect:active {
+  animation: buttonPress 0.2s ease;
+}
+
+/* Add smooth transition for all interactive elements */
+a, button, input, select {
+  transition: all 0.3s ease;
+}
+
+/* Add focus styles for better accessibility */
+*:focus {
+  outline: 2px solid var(--clr-red);
+  outline-offset: 2px;
+}
+
+/* Remove focus outline for mouse users, keep for keyboard */
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Add text selection color */
+::selection {
+  background-color: var(--clr-red);
+  color: var(--clr-white);
 }
