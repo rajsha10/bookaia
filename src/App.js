@@ -14,6 +14,22 @@ import BookAia from './abis/BookAia.json'
 import config from './config.json'
 
 function App() {
+
+  const thumbImages = [
+    '/images/fight.png',
+    '/images/hack.png',
+    '/images/hack.png',
+    '/images/kkr.png',
+    '/images/hack.png',
+    '/images/hydrabad.png',
+    '/images/hack.png',
+    '/images/hack.png',
+    '/images/luck.png',
+    '/images/hack.png',
+    '/images/robot.png',
+    
+  ];
+
   const [provider, setProvider] = useState(null)
   const [account, setAccount] = useState(null)
 
@@ -80,6 +96,7 @@ function App() {
             setToggle={setToggle}
             setOccasion={setOccasion}
             key={index}
+            src={thumbImages[index++]}
           />
         ))}
       </div>

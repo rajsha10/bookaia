@@ -11,9 +11,6 @@ const Navigation = ({ account, setAccount }) => {
     <nav>
       <div className='nav__brand'>
         <h1>BookAia</h1>
-
-        <input className='nav__search' type="text" placeholder='Find millions of experiences' />
-
         <ul className='nav__links'>
           <li><a href="/">Concerts</a></li>
           <li><a href="/">Sports</a></li>
